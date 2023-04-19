@@ -1,0 +1,41 @@
+{
+  "name": "track-gmail-extension",
+  "version": "0.1.0",
+  "description": "Mail read receipts",
+  "permissions": [
+    "https://mail.google.com/*",
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://mail.google.com/mail/u/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://mail.google.com/mail/u/*"
+      ],
+      "js": [
+        "contentScript.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/read-receipt-button.png",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Ash_Tree_-_geograph.org.uk_-_590710.jpg/*"
+      ],
+      "matches": [
+        "https://mail.google.com/*"
+      ]
+    }
+  ],
+  "action": {
+    "default_title": "Track Gmail"
+  },
+  "manifest_version": 3
+}
